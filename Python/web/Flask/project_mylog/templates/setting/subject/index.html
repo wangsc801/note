@@ -1,0 +1,29 @@
+{% extends "layout/base.html" %}
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+<h2>Add Subject</h2>
+<a href="/setting/subject/add">add item</a>
+<br>
+<div class="row justify-content-md-center">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">name</th>
+        <th scope="col">belongs</th>
+        <th scope="col" colspan="2">operation</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for subject in subjects %}
+      <tr>
+        <td>{{ subject[0] }}</td>
+        <td>{{ subject[1] }}</td>
+        <td><a class="btn btn-secondary">update</a></td>
+        <td><a class="btn btn-danger">delete</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

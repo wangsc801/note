@@ -1,0 +1,7 @@
+__pycache__
+private_key.txt
+dbconfig.toml
+
+tmp
+
+static/*

@@ -1,0 +1,82 @@
+<html>
+  <head>
+    <style type="text/css">
+      #color_box {
+        width: 500px;
+        height: 309px;
+        margin: 0 auto;
+        background-color: #eee;
+        border: 2px black solid;
+      }
+      #input_area {
+        width: 512px;
+        height: 64px;
+        padding: 16px;
+        text-align: center;
+        margin: 0 auto;
+      }
+      #text_box{
+          font-size: 18;
+      }
+      #hint {
+        animation-name: hint;
+        animation-duration: 1s;
+        animation-iteration-count: 1;
+      }
+      @keyframes hint {
+        0% {
+          background-color: darkorange;
+        }
+        100% {
+          background-color: transparent;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="color_box"></div>
+    <div id="input_area">
+      <span>#</span>
+      <input id="text_box" type="text" placeholder="input hex color value"/>
+      <br /><br />
+      <input id="confirm_button" type="button" value="change color" />
+      <br /><br />
+      <span>for example: 000, adf, de2910</span>
+      <br /><br />
+    </div>
+  </body>
+  <script type="text/javascript">
+    var button = document.getElementById("confirm_button");
+    var hex_color_pattern = /(^([a-fA-F\d]){3}$|^([a-fA-F\d]){6}$)/;
+    button.onclick = function () {
+      removeHint();
+      let text_box = document.getElementById("text_box");
+      let color_box = document.getElementById("color_box");
+      let text_box_val = text_box.value;
+
+      
+      if (hex_color_pattern.test(text_box_val)) {
+        color_box.setAttribute("style", "background-color: #" + text_box_val);
+      } else {
+        createHint();
+        let hint = document.getElementById("hint");
+        hint.innerText = "wrong code";
+      }
+    };
+
+    function createHint() {
+      let inputArea = document.getElementById("input_area");
+      let hint = document.createElement("span");
+      hint.id = "hint";
+      inputArea.appendChild(hint);
+    }
+
+    function removeHint() {
+      let hint = document.getElementById("hint");
+      if (hint != null) {
+          let inputArea=document.getElementById("input_area");
+          inputArea.removeChild(hint);
+      }
+    }
+  </script>
+</html>

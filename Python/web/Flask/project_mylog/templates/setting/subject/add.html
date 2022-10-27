@@ -1,0 +1,12 @@
+{% extends "layout/base.html" %}
+{% block title %}Home Page{% endblock %}
+{% block content %}
+<h2>add subject</h2>
+<form method="POST" action="/setting/subject/add">
+  {{ form.csrf_token }}
+  {{ form.name.label }} {{ form.name(size=20) }}
+  <br>
+  {{ form.category_list.label }} {{ form.category_list }}
+  <input type="submit" value="Go">
+</form>
+{% endblock %}
