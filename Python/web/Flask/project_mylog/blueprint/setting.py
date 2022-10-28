@@ -1,4 +1,3 @@
-from re import sub
 import service.setting.category_serv as category_serv
 import service.setting.subject_serv as subject_serv
 from flask import Blueprint, render_template, request, redirect, url_for

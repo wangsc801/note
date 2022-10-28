@@ -20,4 +20,4 @@ with app.app_context():
 
 if __name__ == '__main__':
     print(f"urls -> \n{app.url_map}")
-    app.run(port=5000)
+    app.run(port=5000,debug=True)
