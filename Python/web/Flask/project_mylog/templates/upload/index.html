@@ -1,26 +1,10 @@
 {% extends "layout/base.html" %}
-{% block head %}
-<link href="{{ url_for('static', filename='uppy/uppy.3.2.2.min.css') }}" rel="stylesheet">
-{% endblock %}
-{% block title %}Home Page{% endblock %}
+{% block title %}upload{% endblock %}
 {% block content %}
-<div id="drag-drop-area" style="height: 220px;">
-  {{form.attachement}}
-</div>
-<script type="module">
-  import { Uppy, Dashboard, Tus } from "{{ url_for('static',filename='uppy/uppy.min.mjs') }}";
-  var uppy = new Uppy()
-    .use(Dashboard, {
-      inline: true,
-      target: "#drag-drop-area",
-    })
-    .use(Tus, { endpoint: "http://localhost:5000/upload" });
-
-  uppy.on("complete", (result) => {
-    console.log(
-      "Upload complete! We’ve uploaded these files:",
-      result.successful
-    );
-  });
-</script>
+<form method="post" action="/upload" enctype="multipart/form-data">
+  {{form.csrf_token}}
+  {{form.attachment}}
+  <br>
+  <input type="submit"/>
+</form>
 {% endblock %}
