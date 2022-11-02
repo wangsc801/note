@@ -10,7 +10,6 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(32), nullable=False, unique=True)
     password = db.Column(db.String(32), nullable=False)
     salt = db.Column(db.String(16), nullable=False)
-    email = db.Column(db.String(36), nullable=True)
     create_at = db.Column(
         db.DateTime, server_default=func.now(), nullable=True)
     visable = db.Column(db.String(1), nullable=False, default="1")

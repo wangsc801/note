@@ -1,7 +1,10 @@
 {% extends "layout/base.html" %}
 {% block title %}Signin Page{% endblock %}
 {% block content %}
-{{form.username}}
-{{form.password}}
-{{form.submit}}
+<form action="/sign/in" method="post">
+    {{ form.csrf_token }}
+    {{form.username}}
+    {{form.password}}
+    {{form.submit}}
+</form>
 {% endblock %}
