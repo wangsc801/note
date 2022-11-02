@@ -19,9 +19,15 @@ def get_sha1(text):
     return hash_sha1.hexdigest()
 
 
-def user_with_username_password(username: str, password: str):
-    user = User
+def add_user_with_username_password(username: str, password: str):
+    user = User()
     user.username = username
     user.salt = getRandChar(16)
     user.password = get_sha1(user.salt+password)
-    return user
+    user_dao.add(user)
+
+def get_by_id(id):
+    return user_dao.get_by_id(id)
+
+def get_by_username(username:str):
+    return user_dao.get_by_username(username)

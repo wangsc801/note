@@ -6,4 +6,7 @@ def add(user:User):
     db.session.commit()
 
 def get_by_id(id:int):
-    return User.query.filter(User.visable=='1' and User.id==id).first()
+    return User.query.filter(User.id==id and User.visable=='1').first()
+
+def get_by_username(username:str):
+    return User.query.filter(User.username==username and User.visable=='1').first()

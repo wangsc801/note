@@ -1,11 +1,14 @@
 from app import create_app, db
-from blueprint.setting_bp import setting_page,categrory_page,subject_page
+from blueprint.setting.setting_bp import setting_page
+from blueprint.setting.category_bp import categrory_page
+from blueprint.setting.subject_bp import subject_page
 from blueprint.home_bp import home_page
 from blueprint.upload_bp import upload_page
 from blueprint.sign_bp import sign_page
 
 from models.setting.category import Category
 from models.setting.subject import Subject
+from models.user import User
 
 app = create_app()
 
@@ -21,5 +24,5 @@ with app.app_context():
 
 
 if __name__ == '__main__':
-    print(f"urls -> \n{app.url_map}")
+    print(f'\n------\nurls\n---\n{app.url_map}')
     app.run(port=5000,debug=True)
