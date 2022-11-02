@@ -1,3 +1,5 @@
 SECRET_KEY = '123456abcdef'
 SQLALCHEMY_DATABASE_URI = "mysql://root:root@localhost:3306/mylog"
 SQLALCHEMY_TRACK_MODIFICATIONS = true
+UPLOAD_ROOT_DIR = "/var/upload/"
+TOTP_SECRET_KEY = "totp_secret_key"
