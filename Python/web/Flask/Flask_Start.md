@@ -14,19 +14,19 @@ def hello_world():
 
 ### app = Flask(__name__)
 
-**Create an instance of this class**. The first argument is the name of the application’s module or package. `__name__` is a convenient shortcut for this that is appropriate for most cases. This is needed so that Flask knows where to look for **resources** such as **templates and static files**.
+__Create an instance of this class__. The first argument is the name of the application’s module or package. `__name__` is a convenient shortcut for this that is appropriate for most cases. This is needed so that Flask knows where to look for __resources__ such as __templates and static files__.
 
 ### @app.route("/")
 
-Use the route() **decorator** to tell Flask what URL should **trigger our function**.
+Use the route() __decorator__ to tell Flask what URL should __trigger our function__.
 
-### return 
+### return
 
-The function returns the message we want to display in the user’s browser. The **default** content type is **HTML**, so HTML in the string will be rendered by the browser.
+The function returns the message we want to display in the user’s browser. The __default__ content type is __HTML__, so HTML in the string will be rendered by the browser.
 
 ### run the script
 
-Save it as `hello.py` or something similar. Make sure to not call your application `flask.py` because this would **conflict** with Flask itself.
+Save it as `hello.py` or something similar. Make sure to not call your application `flask.py` because this would __conflict__ with Flask itself.
 
 As a shortcut, if the file is named `app.py` or `wsgi.py`, you don’t have to set the `FLASK_APP` environment variable.
 
@@ -36,17 +36,17 @@ To run the application, use the `flask` command or `python -m flask`. Before you
 $ export FLASK_APP=hello
 $ flask run
  * Running on http://127.0.0.1:5000/
-``` 
+```
 
 ## Debug Mode
 
-The `flask run` command can do more than just start the development server. By enabling **debug mode**, the server will **automatically reload** if code changes, and will show an interactive debugger in the browser if an error occurs during a request.
+The `flask run` command can do more than just start the development server. By enabling __debug mode__, the server will __automatically reload__ if code changes, and will show an interactive debugger in the browser if an error occurs during a request.
 
-The debugger allows executing arbitrary Python code from the browser. It is protected by a pin, but still represents a major security risk. **Do not run the development server or debugger** in a production environment.
+The debugger allows executing arbitrary Python code from the browser. It is protected by a pin, but still represents a major security risk. __Do not run the development server or debugger__ in a production environment.
 
 ```bash
-$ export FLASK_ENV=development
-$ flask run
+export FLASK_ENV=development
+flask run
 ```
 
 ```cmd
@@ -56,9 +56,9 @@ $ flask run
 
 ## HTML escaping
 
-When returning HTML (the default response type in Flask), any user-provided values rendered in the output must be escaped to protect from **injection attacks**. HTML templates rendered with Jinja, introduced later, will do this automatically.
+When returning HTML (the default response type in Flask), any user-provided values rendered in the output must be escaped to protect from __injection attacks__. HTML templates rendered with Jinja, introduced later, will do this automatically.
 
-`escape()`, shown here, can be used manually. It is omitted in most examples for brevity, but you should always be aware of how you’re using **untrusted data**.
+`escape()`, shown here, can be used manually. It is omitted in most examples for brevity, but you should always be aware of how you’re using __untrusted data__.
 
 ```python
 from markupsafe import escape
@@ -68,9 +68,9 @@ def hello(name):
     return f"Hello, {escape(name)}!"
 ```
 
-If a user managed to submit the name `<script>alert("bad")</script>`, escaping causes it to be **rendered as text**, rather than running the script in the user’s browser.
+If a user managed to submit the name `<script>alert("bad")</script>`, escaping causes it to be __rendered as text__, rather than running the script in the user’s browser.
 
-`<name>` in the route captures a value from the URL and passes it to the view function. These **variable rules** are explained below.
+`<name>` in the route captures a value from the URL and passes it to the view function. These __variable rules__ are explained below.
 
 ## Varible Rules
 
@@ -95,26 +95,31 @@ def show_subpath(subpath):
     return f'Subpath {escape(subpath)}'
 ```
 
-### Converter types:
+### Converter types
 
 #### string
+
 (default) accepts any text without a slash
 
 #### int
+
 accepts positive integers
 
 #### float
+
 accepts positive floating point values
 
 #### path
+
 like string but also accepts slashes
 
 #### uuid
+
 accepts UUID strings
 
 ## URL Building
 
-To build a URL to a specific function, use the url_for() function. It **accepts** the name of the **function** as its first argument and any number of keyword arguments, each corresponding to a variable part of the URL rule. Unknown variable parts are appended to the URL as query parameters.
+To build a URL to a specific function, use the url_for() function. It __accepts__ the name of the __function__ as its first argument and any number of keyword arguments, each corresponding to a variable part of the URL rule. Unknown variable parts are appended to the URL as query parameters.
 
 ## HTTP Methods
 
